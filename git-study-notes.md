@@ -136,18 +136,5 @@ a7ea889 (origin/master, dev) HEAD@{10}: commit: git学习笔记初次提交
 HEAD is now at a7ea889 git学习笔记初次提交
 ```
 
-
-
 - 查看所有引用日志：`git reflog`，如果不小心
-
 - 日志查看：普通查看：`git log`；美化输出：`git log pretty=oneline`
-
-- 版本管理
-
-  - 查看变动：`git diff`
-
-    
-
-    
-
-  - 回退至特定版本：`git reset --
