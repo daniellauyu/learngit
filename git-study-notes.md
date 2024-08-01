@@ -138,3 +138,4 @@ HEAD is now at a7ea889 git学习笔记初次提交
 
 - 查看所有引用日志：`git reflog`，如果不小心
 - 日志查看：普通查看：`git log`；美化输出：`git log pretty=oneline`
+- 家里windows电脑测试
