@@ -443,3 +443,69 @@ Creating a new branch is quick AND simple.
 v1.0
 ```
 
+- 打标签前先切换到当前分支，然后就可以进行打标签了，然后通过`git log --pretty=oneline --abbrev-commit`查看。
+
+```
+ ~/Desktop/huixing/OpenSource/learngit/ [master] git log --pretty=oneline --abbrev-commit
+cdb078b (HEAD -> master) tag v1.0
+8e0e215 (tag: v1.0, dev) v0.1
+bb24a13 解决冲突
+695abbd & simple
+5312add AND simple
+6a4cbc6 111
+ac38a92 删除test分支前提交
+716d6b5 合并分支前提交，8月5日14点11分
+94fb068 test
+a64220e 切换分支前提交下
+ba085a3 "删除readme.md"
+ac60221 "test,下午13点30分提交"
+1667a26 11点27提交
+2651b23 (origin/master) 晚上22点11分，家里windows电脑测试提交
+eb69ca9 8月1日下午5点30修改提交
+1e1596e 8月1日下午13点38分提交更新
+a7ea889 git学习笔记初次提交
+0f264e0 dev 增加
+8054cb6 test
+59c9e41 test
+40ce877 hhh
+3cd4534 first commit
+```
+
+- 也可以对特定版本的commit id进行打标签，使用`git tag tagname commitID`来对特定版本打标签。比如我对上面的合并版本commit`bb24a13`打一个`v0.9`的标签，就可以使用`git tag v0.9 bb24a13`来进行。
+
+```
+ ~/Desktop/huixing/OpenSource/learngit/ [master] git tag v0.9 bb24a13
+ ~/Desktop/huixing/OpenSource/learngit/ [master] git log --pretty=oneline --abbrev-commit
+cdb078b (HEAD -> master) tag v1.0
+8e0e215 (tag: v1.0, dev) v0.1
+bb24a13 (tag: v0.9) 解决冲突
+695abbd & simple
+5312add AND simple
+6a4cbc6 111
+ac38a92 删除test分支前提交
+716d6b5 合并分支前提交，8月5日14点11分
+94fb068 test
+a64220e 切换分支前提交下
+ba085a3 "删除readme.md"
+ac60221 "test,下午13点30分提交"
+1667a26 11点27提交
+2651b23 (origin/master) 晚上22点11分，家里windows电脑测试提交
+eb69ca9 8月1日下午5点30修改提交
+1e1596e 8月1日下午13点38分提交更新
+a7ea889 git学习笔记初次提交
+0f264e0 dev 增加
+8054cb6 test
+59c9e41 test
+40ce877 hhh
+3cd4534 first commit
+```
+
+- 删除标签：`git tag -d tagname`。
+
+```
+ ~/Desktop/huixing/OpenSource/learngit/ [master*] git tag -d v1.0
+Deleted tag 'v1.0' (was 8e0e215)
+```
+
+- 推送标签到远程：使用`git push origin tagname`。
+
