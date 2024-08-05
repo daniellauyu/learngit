@@ -8,7 +8,6 @@ categories:
 	- 随笔
 ---
 
-[toc]
 
 很多年前我就使用过Github，但是这么多年我基本只会用`clone`来下载东西，从来没有通过本地进行推送过，原因也很简单，因为我本职工作还是产品设计，并不会系统的写一个大项目，但是最近我在学习swift的过程中，我很想实现在公司写的代码，在我家电脑也能同步出现，我知道这个问题通过NAS是可以实现的，但是感觉不够优雅，于是我就又找了一些Git的使用教程开始了稍微深入下的学习。
 
@@ -509,3 +508,77 @@ Deleted tag 'v1.0' (was 8e0e215)
 
 - 推送标签到远程：使用`git push origin tagname`。
 
+```
+ ~/Desktop/huixing/OpenSource/learngit/ [master] git push origin v1.0
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:daniellauyu/learngit.git
+ * [new tag]         v1.0 -> v1.0
+```
+
+## 远程使用Git
+
+上面都是基础操作，其实远程使用才是最核心的，如果自己有一定技术能力，可以部署一个私有化的Gitlab，我因为没那个需求，所以直接使用Github即可，这里如何在Github创建仓库就不赘述了，可以通过图形化界面简单的创建即可。创建完成之后有个细节的地方，如果是通过`ssh`连接的话，需要在`.ssh`文件夹下面创建秘钥，分为公钥跟私钥，这里也不赘述了。
+
+我在这里记录一个我遇到的坑，就是配置好之后无论如何都无法连接到远程仓库，可以使用下面的指令来进行测试。如果一直提示22端口无法连接的话，可以通过创建一个配置文件来解决。
+
+```
+ ~/Desktop/huixing/OpenSource/learngit/ [master] git push origin master
+banner exchange: Connection to 198.18.0.44 port 443: invalid format
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+在`.ssh`目录下创建一个`config`文件，输入下面的内容，最下面一行我在家里的windows电脑没输入也能连上，不知道有什么用，GitHub官方的资料中没有这一行。
+
+```
+Host github.com
+  Hostname ssh.github.com
+  Port 443
+  User git
+  IdentityFile /Users/daniellau/.ssh/id_rsa
+```
+
+然后通过`ssh -T git@github.com`来进行测试，如果成功的话会提示下面信息。
+
+```
+ ~/Desktop/huixing/OpenSource/learngit/ [master] ssh -T git@github.com
+Hi daniellauyu! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+- 链接远程仓库：`git remote add origin git@github.com:username/gitname.git`，链接成功后就可以进行推送了。推送使用`git push -u origin master`，其中`origin`是约定俗成的远程仓库名称，`master`代表推送的分支。
+
+```
+ ~/Desktop/huixing/OpenSource/learngit/ [master] git push origin master
+Enumerating objects: 46, done.
+Counting objects: 100% (46/46), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (42/42), done.
+Writing objects: 100% (43/43), 9.36 KiB | 9.36 MiB/s, done.
+Total 43 (delta 26), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (26/26), completed with 1 local object.
+To github.com:daniellauyu/learngit.git
+   2651b23..7429f63  master -> master
+```
+
+像上面这样就代表推送成功了。
+
+- 删除远程库：`git remote rm name`，使用前先通过`git remote -v`来查看远程库的信息。
+
+- 克隆远程库：这个没什么好说的，也是我之前唯一会用的指令，`git clone 仓库地址`。
+
+- 从Github远程仓库更新：当我在公司的Mac电脑上操作并提交之后，回到家我如果要继续工作，那么可以通过`git pull origin master`来获取远程仓库的更新，然后就可以继续工作了。
+
+```
+
+
+```
+
+
+
+## 后记
+
+前前后后共花了两三天把雪峰老师的这个Git教程看完了，并且将本文推送到了Github的仓库：[https://github.com/daniellauyu/learngit/](https://github.com/daniellauyu/learngit/)；也作为一个学习Git的笔记了。
+
+总得来说感觉Git还是非常的简单易学，很适合有需要的花一点时间学习下，而且的确也能感受到Git的思维的确比svn要好太多。
