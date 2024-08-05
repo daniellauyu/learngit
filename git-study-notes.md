@@ -325,4 +325,29 @@ Switched to branch 'test'
 
 现在我做的所有改动都是在`test`分支上的，另外两个分支都没有我现在的内容。现在我们可以切换回`master`分支，可以发现`master`分支并没有我现在新录入的内容。
 
-- 合并分支：合并分支
+- 我现在在`test`分支做了很多修改，当我要切换到`dev`分支时，系统会阻止我直接切换，原因是我的`test`分支做了很多改动，直接切换的话，可能会导致数据丢失。
+
+```
+ ~/Desktop/huixing/OpenSource/learngit/ [test] git switch dev
+error: Your local changes to the following files would be overwritten by checkout:
+	git-study-notes.md
+Please commit your changes or stash them before you switch branches.
+```
+
+按照正常的提交流程提交到版本库，这里还有一种做法可以使用`git stash`保存未提交的更改。
+
+- 合并分支：现在`test`版本已经提交到版本库了，此时我们可以切换到`dev`版本进行版本合并，使用`git merge test`就可以把test版本的内容合并到`dev`，这里有可能存在冲突，存在冲突的情况就需要手动处理了。
+
+```
+ ~/Desktop/huixing/OpenSource/learngit/ [dev] git merge test
+Updating a64220e..716d6b5
+Fast-forward
+ git-study-notes.md | 31 ++++++++++++++++++++++++++++++-
+ 1 file changed, 30 insertions(+), 1 deletion(-)
+```
+
+- 删除分支：合并完之后我们可以删除掉`test`分支，使用`git branch -d test`来删除`test`分支。
+
+```
+```
+
