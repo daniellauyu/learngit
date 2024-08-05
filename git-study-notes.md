@@ -592,3 +592,8 @@ Fast-forward
 前前后后共花了两三天把雪峰老师的这个Git教程看完了，并且将本文推送到了Github的仓库：[https://github.com/daniellauyu/learngit/](https://github.com/daniellauyu/learngit/)；也作为一个学习Git的笔记了。
 
 总得来说感觉Git还是非常的简单易学，很适合有需要的花一点时间学习下，而且的确也能感受到Git的思维的确比svn要好太多。
+
+>参考资料
+>
+>- https://liaoxuefeng.com/books/git/
+>- https://zhuanlan.zhihu.com/p/692118340
