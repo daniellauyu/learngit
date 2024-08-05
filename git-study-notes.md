@@ -43,6 +43,8 @@ test.md
 
 ## 本地使用Git
 
+### Git基础操作
+
 Git的使用之前我只用过`clone`，但是clone其实是最简单的，而且不是核心说白了就是下载，下面是我总结的Git的一些核心使用功能（可能不全，大神勿喷）：
 
 - 查看仓库中的文件状态：`git status`，我们刚刚修改了本文，所以可以看到当前文件有修改。
@@ -136,6 +138,113 @@ a7ea889 (origin/master, dev) HEAD@{10}: commit: git学习笔记初次提交
 HEAD is now at a7ea889 git学习笔记初次提交
 ```
 
-- 查看所有引用日志：`git reflog`，如果不小心
-- 日志查看：普通查看：`git log`；美化输出：`git log pretty=oneline`
-- 家里windows电脑测试
+- 日志查看：普通查看：`git log`；美化输出：`git log pretty=oneline`。
+
+```bash
+2651b23d2377fcd251f64b3bd79b877829d0062a (HEAD -> master, origin/master) 晚上22
+点11分，家里windows电脑测试提交
+eb69ca9a79be5b4edc7075ac7c93a1ded3fe0e3c 8月1日下午5点30修改提交
+1e1596e2d2c9f5f439d3a63142d2b45eb810561a 8月1日下午13点38分提交更新
+a7ea88956d0d83ebaf2b804ad20b772cb99718c2 (dev) git学习笔记初次提交
+0f264e06e97eb05341ef3610c2e325d0dbfbb248 dev 增加
+8054cb647c64b3a82f58e2a2eafdf2dc64f3aeb6 test
+59c9e416a6b99afb917b1447e3c8ee510650b211 test
+40ce877007cff1ce3e8b9249f1203bdd4b21f1e8 hhh
+3cd45346ee768fe7f0f05b65b2e9c4444cfb539a first commit
+```
+
+- 撤销工作区修改：`git checkout -- filename`，通过当前指令将会撤销工作区的修改，不会影响暂存区，执行后，将会将代码恢复至暂存区的版本。
+
+```bash
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] git add readme.md
+ ~/Desktop/huixing/OpenSource/learngit/ [master+] cat readme.md
+# readme
+Test111
+hhh
+这一行是dev的代码
+我添加了一行文本，这行文本将被添加到暂存区。%
+ ~/Desktop/huixing/OpenSource/learngit/ [master+] git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   git-study-notes.md
+	modified:   readme.md
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   readme.md
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] cat readme.md
+# readme
+Test111
+hhh
+这一行是dev的代码
+我添加了一行文本，这行文本将被添加到暂存区。
+我现在又添加了一行代码，这样代码不添加到暂存区。%
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] git checkout -- readme.md
+ ~/Desktop/huixing/OpenSource/learngit/ [master+] cat readme.md
+# readme
+Test111
+hhh
+这一行是dev的代码
+我添加了一行文本，这行文本将被添加到暂存区。
+```
+
+- 撤销暂存区修改：`git restore --staged file`，如果需要撤销暂存区的所有提交，可以执行当前指令，只会影响暂存区，不会影响工作区。
+
+```
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] git add readme.md
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] cat readme.md
+# readme
+Test111
+hhh
+这一行是dev的代码
+我添加了一行文本，这行文本将被添加到暂存区。
+我现在添加一行文本，这行文本先被添加到暂存区，接着再从暂存区撤销。%
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] git restore --staged readme.md
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] cat readme.md
+# readme
+Test111
+hhh
+这一行是dev的代码
+我添加了一行文本，这行文本将被添加到暂存区。%                                    ~/Desktop/huixing/OpenSource/learngit/ [master+*]
+```
+
+- 删除文件：`git rm file`，要删除文件不能光从本地删除，如果光从本地删除，此时版本库中还是有这个文件存在的。此时输入`git status`可以看到这个文件还存在于版本库中，然后我们可以用git rm file来删除这个文件。
+
+```bash
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] rm readme.md
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   git-study-notes.md
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   git-study-notes.md
+	deleted:    readme.md
+
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] git rm readme.md
+rm 'readme.md'
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   git-study-notes.md
+	deleted:    readme.md
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   git-study-notes.md
+```
+
+- 恢复文件：恢复文件分为
