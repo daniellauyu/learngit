@@ -379,4 +379,59 @@ Creating a new branch is quick AND simple.
 >>>>>>> feature1
 ```
 
-- 解决完冲突之后再次提交。
+- 解决完冲突之后再次提交。然后通过`git log --graph --pretty=oneline --abbrev-commit`来查看下日志，可以看到其中两个分支合并到了一起。最后删除`feature1`分支。
+
+```
+*   bb24a13 (HEAD -> dev) 解决冲突
+|\
+| * 5312add (feature1) AND simple
+* | 695abbd & simple
+|/
+* 6a4cbc6 111
+* ac38a92 删除test分支前提交
+* 716d6b5 合并分支前提交，8月5日14点11分
+* 94fb068 test
+* a64220e (master) 切换分支前提交下
+* ba085a3 "删除readme.md"
+* ac60221 "test,下午13点30分提交"
+* 1667a26 11点27提交
+* 2651b23 (origin/master) 晚上22点11分，家里windows电脑测试提交
+* eb69ca9 8月1日下午5点30修改提交
+* 1e1596e 8月1日下午13点38分提交更新
+* a7ea889 git学习笔记初次提交
+* 0f264e0 dev 增加
+* 8054cb6 test
+* 59c9e41 test
+* 40ce877 hhh
+* 3cd4534 first commit
+```
+
+- 查看合并分支图：`git log --graph`。
+
+```
+*   commit bb24a132f8cd3e35b5e370cdd89b34d318587d0e (HEAD -> dev)
+|\  Merge: 695abbd 5312add
+| | Author: huixing <contact@liuyude.com>
+| | Date:   Mon Aug 5 14:48:59 2024 +0800
+| |
+| |     解决冲突
+| |
+| * commit 5312addc649675d35024087f444069fd024bc31c
+| | Author: huixing <contact@liuyude.com>
+| | Date:   Mon Aug 5 14:36:39 2024 +0800
+| |
+| |     AND simple
+| |
+* | commit 695abbdc53ecdc570546547c2829887ceb7a0d52
+|/  Author: huixing <contact@liuyude.com>
+|   Date:   Mon Aug 5 14:38:00 2024 +0800
+|
+|       & simple
+|
+* commit 6a4cbc6a6e1a25ae7bd3e0602cfb2a93659933e0
+| Author: huixing <contact@liuyude.com>
+| Date:   Mon Aug 5 14:35:00 2024 +0800
+|
+|     111
+```
+
