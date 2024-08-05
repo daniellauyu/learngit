@@ -435,3 +435,11 @@ Creating a new branch is quick AND simple.
 |     111
 ```
 
+- 标签管理：使用`git tag tagname`可以创建标签，使用`git tag`查看所有标签
+
+```
+ ~/Desktop/huixing/OpenSource/learngit/ [master] git tag v1.0
+ ~/Desktop/huixing/OpenSource/learngit/ [master] git tag
+v1.0
+```
+
