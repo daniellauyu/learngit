@@ -8,6 +8,8 @@ categories:
 	- 随笔
 ---
 
+[toc]
+
 很多年前我就使用过Github，但是这么多年我基本只会用`clone`来下载东西，从来没有通过本地进行推送过，原因也很简单，因为我本职工作还是产品设计，并不会系统的写一个大项目，但是最近我在学习swift的过程中，我很想实现在公司写的代码，在我家电脑也能同步出现，我知道这个问题通过NAS是可以实现的，但是感觉不够优雅，于是我就又找了一些Git的使用教程开始了稍微深入下的学习。
 
 学习教程我找的是廖雪峰的Git学习教程：[Git教程](https://liaoxuefeng.com/books/git/introduction/)
@@ -275,4 +277,23 @@ generateMobilePhoneNumber.py readme.md
 git-study-notes.md
 ```
 
-- 恢复文件：另一种情况是已经执行了`git commit`，
+- 恢复文件：另一种情况是已经执行了`git commit`时，可以从之前的版本进行回复，比如通过上一个提交中恢复`git checkout HEAD~1 -- readme.md`。
+
+```
+ ~/Desktop/huixing/OpenSource/learngit/ [master] ls
+generateMobilePhoneNumber.py git-study-notes.md
+ ~/Desktop/huixing/OpenSource/learngit/ [master] git checkout HEAD~1 -- readme.md
+ ~/Desktop/huixing/OpenSource/learngit/ [master+] ls
+generateMobilePhoneNumber.py readme.md
+git-study-notes.md
+```
+
+### 分支管理
+
+Git还有一个很方便的功能就是可以进行分支管理，我之前经常写脚本的时候就会遇到我写好了一个脚本，跑起来没有任何问题，但是当我想修改时，往往会复制一份这个脚本，如果使用Git的话就不需要这么做了，我们只需要创建一个分支就可以解决了。
+
+- 创建分支：首先我们创建一个`dev`分支，然后切换到该分支。
+
+```
+```
+
