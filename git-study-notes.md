@@ -319,5 +319,10 @@ Switched to a new branch 'dev'
 - 切换分支：然后我们通过`git checkout test`来切换到`test`分支。这里特别注意，切换分支时，使用`git switch test`更容易理解，
 
 ```
+ ~/Desktop/huixing/OpenSource/learngit/ [test] git switch test
+Switched to branch 'test'
 ```
 
+现在我做的所有改动都是在`test`分支上的，另外两个分支都没有我现在的内容。现在我们可以切换回`master`分支，可以发现`master`分支并没有我现在新录入的内容。
+
+- 合并分支：合并分支
