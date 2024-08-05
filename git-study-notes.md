@@ -353,3 +353,30 @@ Fast-forward
 Deleted branch test (was 716d6b5).
 ```
 
+- 解决冲突：我们分别在两个分支`dev`跟`feature1`上的同一个文件`readme.md`编辑最后一行为不同的内容，从而导致这两个版本存在冲突，然后我们执行`git merge feature1`，此时Git会提示存在冲突。
+
+```
+ ~/Desktop/huixing/OpenSource/learngit/ [dev] git merge feature1
+Auto-merging readme.md
+CONFLICT (content): Merge conflict in readme.md
+Automatic merge failed; fix conflicts and then commit the result.
+ ~/Desktop/huixing/OpenSource/learngit/ [dev|merge+*]
+```
+
+我们查看下存在冲突的文件，使用`cat readme.md`进行查看。此时需要手动编辑当前文本，把`<<<<<<<`与`>>>>>>>`之间的代码手动编辑并解决冲突。
+
+```
+ ~/Desktop/huixing/OpenSource/learngit/ [dev|merge+*] cat readme.md
+# readme
+Test111
+hhh
+这一行是dev的代码
+<<<<<<< HEAD
+Creating a new branch is quick & simple.
+=======
+Creating a new branch is quick AND simple.
+
+>>>>>>> feature1
+```
+
+- 解决完冲突之后再次提交。
