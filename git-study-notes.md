@@ -571,10 +571,21 @@ To github.com:daniellauyu/learngit.git
 - 从Github远程仓库更新：当我在公司的Mac电脑上操作并提交之后，回到家我如果要继续工作，那么可以通过`git pull origin master`来获取远程仓库的更新，然后就可以继续工作了。
 
 ```
-
+huixing@DESKTOP-27OKUAF MINGW64 /d/learngit (master)
+$ git pull origin master
+remote: Enumerating objects: 8, done.
+remote: Counting objects: 100% (8/8), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 6 (delta 4), reused 4 (delta 2), pack-reused 0
+Unpacking objects: 100% (6/6), 2.35 KiB | 96.00 KiB/s, done.
+From github.com:daniellauyu/learngit
+ * branch            master     -> FETCH_HEAD
+   7429f63..34b7c12  master     -> origin/master
+Updating 7429f63..34b7c12
+Fast-forward
+ git-study-notes.md | 74 +++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 73 insertions(+), 1 deletion(-)
 ```
-
-
 
 ## 后记
 
