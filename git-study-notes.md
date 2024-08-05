@@ -247,4 +247,32 @@ Changes not staged for commit:
 	modified:   git-study-notes.md
 ```
 
-- 恢复文件：恢复文件分为
+- 恢复文件：恢复文件分为两种情况，首先是只执行了`git rm file`，没有执行`git commit`时可以按下面的指令操作。先执行`git restore --staged filename`，然后再执行`git restore filename`，然后就可以看到文件被恢复了。
+
+```
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] git rm readme.md
+rm 'readme.md'
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] git restore --staged readme.md
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   git-study-notes.md
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   git-study-notes.md
+	deleted:    readme.md
+
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] ls
+generateMobilePhoneNumber.py git-study-notes.md
+ ~/Desktop/huixing/OpenSource/learngit/ [master+*] git restore readme.md
+ ~/Desktop/huixing/OpenSource/learngit/ [master] ls
+generateMobilePhoneNumber.py readme.md
+git-study-notes.md
+```
+
+- 恢复文件：另一种情况是已经执行了`git commit`，
