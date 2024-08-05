@@ -292,7 +292,7 @@ git-study-notes.md
 
 Git还有一个很方便的功能就是可以进行分支管理，我之前经常写脚本的时候就会遇到我写好了一个脚本，跑起来没有任何问题，但是当我想修改时，往往会复制一份这个脚本，如果使用Git的话就不需要这么做了，我们只需要创建一个分支就可以解决了。
 
-- 创建分支：首先我们创建一个`dev`分支，然后切换到该分支。使用指令`git checkout -b dev`，其中`-b`代表创建，`checkout`代表切换，`dev`代表分支的名称。
+- 创建分支：首先我们创建一个`dev`分支，然后切换到该分支。使用指令`git checkout -b dev`，其中`-b`代表创建，`checkout`代表切换，`dev`代表分支的名称。Git2.23版本之后引入了新的命令`git switch -c dev`，其中`switch`代表切换，`-c`代表create创建，从可读性来说更好，建议使用最新的指令。
 
 ```
  ~/Desktop/huixing/OpenSource/learngit/ [master] git checkout -b dev
@@ -349,5 +349,7 @@ Fast-forward
 - 删除分支：合并完之后我们可以删除掉`test`分支，使用`git branch -d test`来删除`test`分支。
 
 ```
+ ~/Desktop/huixing/OpenSource/learngit/ [dev] git branch -d test
+Deleted branch test (was 716d6b5).
 ```
 
